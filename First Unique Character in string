@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char,int> m1,m2;
+        int i=0;
+        for(auto it:s){
+            if(m1.find(it)!=m1.end() ) {m1.erase(it);m2[it]=i;}
+
+            else if(m2.find(it)==m2.end())m1[it]=i;
+            i++;
+        }
+        
+        for(auto it:s){
+            if(m1.find(it)!=m1.end()) return m1[it];
+        }
+        return -1;
+    }
+};
